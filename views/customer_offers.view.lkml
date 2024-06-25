@@ -9,6 +9,7 @@ view: customer_offers {
     type: yesno
     sql: ${TABLE}."CONVERTED_IND" ;;
   }
+
   dimension: deleted_ind {
     type: yesno
     sql: ${TABLE}."DELETED_IND" ;;
