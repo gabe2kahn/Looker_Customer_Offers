@@ -15,7 +15,7 @@ view: customer_offers_events {
       WHEN ${account_age} <= 180 THEN 'd. 91-180'
       WHEN ${account_age} <= 365 THEN 'e. 181-365'
       WHEN ${account_age} > 365 THEN 'f. 365+'
-      ;;
+    END ;;
   }
 
   dimension: event_name {
