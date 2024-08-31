@@ -6,6 +6,18 @@ view: customer_offers_events {
     sql: DATEDIFF(DAYS,${user_profile.application_approval_date},${event_date} ;;
   }
 
+  dimension: account_age_bucket {
+    type: string
+    sql: CASE
+      WHEN ${account_age} <= 30 THEN 'a. 0-30'
+      WHEN ${account_age} <= 60 THEN 'b. 31-60'
+      WHEN ${account_age} <= 90 THEN 'c. 61-90'
+      WHEN ${account_age} <= 180 THEN 'd. 91-180'
+      WHEN ${account_age} <= 365 THEN 'e. 181-365'
+      WHEN ${account_age} > 365 THEN 'f. 365+'
+      ;;
+  }
+
   dimension: event_name {
     type: string
     sql: ${TABLE}."EVENT_NAME" ;;
