@@ -89,4 +89,9 @@ view: user_offers_placement_pt {
     type: count_distinct
     sql: CASE WHEN ${offer_deleted_raw} IS NOT NULL THEN ${user_id} END ;;
   }
+
+  measure: user_rate {
+    type: number
+    sql: ${customer_offers_events.users}/${users} ;;
+  }
 }
