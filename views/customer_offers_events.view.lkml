@@ -58,6 +58,11 @@ view: customer_offers_events {
     sql: ${user_id} ;;
   }
 
+  measure: user_rate {
+    type: number
+    sql: ${users}/${user_offers_placement_pt.users} ;;
+  }
+
   measure: events {
     type: count_distinct
     sql: ${offer_event_id} ;;
@@ -67,5 +72,7 @@ view: customer_offers_events {
     type: number
     sql: MEDIAN(${account_age} ;;
   }
+
+
 
 }
