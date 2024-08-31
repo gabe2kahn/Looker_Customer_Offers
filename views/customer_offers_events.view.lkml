@@ -3,7 +3,7 @@ view: customer_offers_events {
 
   dimension: account_age {
     type: number
-    sql: DATEDIFF(DAYS,${user_profile.application_approval_date},${event_date} ;;
+    sql: DATEDIFF(DAYS,${user_profile.application_approval_date},${event_date}) ;;
   }
 
   dimension: account_age_bucket {
