@@ -11,11 +11,19 @@ persist_with: offers_default_datagroup
 
 label: "Arro Offer Monitoring"
 
-explore: customer_offers {
+explore: customer_offers_events {
   join: user_profile {
     type: inner
-    sql_on: ${customer_offers.user_id} = ${user_profile.user_id} ;;
+    sql_on: ${customer_offers_events.user_id} = ${user_profile.user_id} ;;
     relationship: many_to_one
+  }
+
+  join: user_offers_placement_pt {
+    type: inner
+    sql_on: ${customer_offers_events.user_id} = ${user_offers_placement_pt.user_id}
+      and ${customer_offers_events.event_date} = ${user_offers_placement_pt.snap_date}
+      and ${customer_offers_events.offer_id} = ${user_offers_placement_pt.offer_id} ;;
+    relationship: many_to_many
   }
 }
 

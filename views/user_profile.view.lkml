@@ -9,7 +9,7 @@ view: user_profile {
     type: number
     sql: ${TABLE}."APPLICATION_ANNUAL_INCOME" ;;
   }
-  dimension_group: application_approval_ts {
+  dimension_group: application_approval {
     type: time
     timeframes: [raw, time, date, week, month, quarter, year]
     sql: CAST(${TABLE}."APPLICATION_APPROVAL_TS" AS TIMESTAMP_NTZ) ;;
@@ -38,12 +38,12 @@ view: user_profile {
     type: number
     sql: ${TABLE}."ARRO_RISK_MODEL_2_SCORE" ;;
   }
-  dimension_group: card_creation_ts {
+  dimension_group: card_creation {
     type: time
     timeframes: [raw, time, date, week, month, quarter, year]
     sql: CAST(${TABLE}."CARD_CREATION_TS" AS TIMESTAMP_NTZ) ;;
   }
-  dimension_group: card_update_ts {
+  dimension_group: card_update {
     type: time
     timeframes: [raw, time, date, week, month, quarter, year]
     sql: CAST(${TABLE}."CARD_UPDATE_TS" AS TIMESTAMP_NTZ) ;;
@@ -123,16 +123,12 @@ view: user_profile {
     timeframes: [raw, time, date, week, month, quarter, year]
     sql: CAST(${TABLE}."LAST_PHYSICAL_CARD_SHIP_DATE" AS TIMESTAMP_NTZ) ;;
   }
-  dimension_group: last_sign_in {
+  dimension_group: last_sign {
     type: time
     timeframes: [raw, time, date, week, month, quarter, year]
     sql: CAST(${TABLE}."LAST_SIGN_IN" AS TIMESTAMP_NTZ) ;;
   }
-  dimension_group: last_update_ts {
-    type: time
-    timeframes: [raw, time, date, week, month, quarter, year]
-    sql: ${TABLE}."LAST_UPDATE_TS" ;;
-  }
+
   dimension: line_test_ind {
     type: string
     sql: ${TABLE}."LINE_TEST_IND" ;;
@@ -201,7 +197,7 @@ view: user_profile {
     type: string
     sql: ${TABLE}."TRUEACCORD_STATUS" ;;
   }
-  dimension_group: user_creation_ts {
+  dimension_group: user_creation {
     type: time
     timeframes: [raw, time, date, week, month, quarter, year]
     sql: CAST(${TABLE}."USER_CREATION_TS" AS TIMESTAMP_NTZ) ;;
