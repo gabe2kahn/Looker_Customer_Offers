@@ -214,6 +214,6 @@ view: user_profile {
 
   measure: median_application_income {
     type: number
-    sql: ${application_annual_income} ;;
+    sql: MEDIAN(${application_annual_income}) ;;
   }
 }
