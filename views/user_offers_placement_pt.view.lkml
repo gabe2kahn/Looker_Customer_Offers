@@ -1,11 +1,23 @@
 view: user_offers_placement_pt {
   sql_table_name: "CUSTOMER"."USER_OFFERS_PLACEMENT_PT" ;;
 
-  dimension_group: insert {
-    type: time
-    timeframes: [raw, time, date, week, month, quarter, year]
-    sql: ${TABLE}."INSERT_TS" ;;
+  dimension: account_age {
+    type: number
+    sql: DATEDIFF(DAYS,${user_profile.application_approval_date},${snap_date}) ;;
   }
+
+  dimension: account_age_bucket {
+    type: string
+    sql: CASE
+      WHEN ${account_age} <= 30 THEN 'a. 0-30'
+      WHEN ${account_age} <= 60 THEN 'b. 31-60'
+      WHEN ${account_age} <= 90 THEN 'c. 61-90'
+      WHEN ${account_age} <= 180 THEN 'd. 91-180'
+      WHEN ${account_age} <= 365 THEN 'e. 181-365'
+      WHEN ${account_age} > 365 THEN 'f. 365+'
+    END ;;
+  }
+
   dimension: offer_category {
     type: string
     sql: ${TABLE}."OFFER_CATEGORY" ;;
