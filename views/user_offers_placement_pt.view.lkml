@@ -90,8 +90,17 @@ view: user_offers_placement_pt {
     sql: CASE WHEN ${offer_deleted_raw} IS NOT NULL THEN ${user_id} END ;;
   }
 
-  measure: user_rate {
+  measure: user_see_rate {
     type: number
-    sql: ${customer_offers_events.users}/${users} ;;
+    sql: COUNT(DISTINCT case when ${customer_offers_events.event_name} = 'visible' THEN ${customer_offers_events.user_id} END)/
+    ${users} ;;
+    value_format_name: percent_1
+  }
+
+  measure: conversion_rate {
+    type: number
+    sql: COUNT(DISTINCT case when ${customer_offers_events.event_name} = 'converted' THEN ${customer_offers_events.user_id} END)/
+      ${users} ;;
+    value_format_name: percent_1
   }
 }
