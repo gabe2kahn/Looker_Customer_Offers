@@ -70,7 +70,7 @@ view: customer_offers_events {
 
   measure: median_account_age {
     type: number
-    sql: MEDIAN(${account_age} ;;
+    sql: MEDIAN(${account_age}) ;;
   }
 
 
