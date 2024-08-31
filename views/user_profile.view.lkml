@@ -211,7 +211,9 @@ view: user_profile {
     type: number
     sql: ${TABLE}."VANTAGE_SCORE" ;;
   }
-  measure: count {
-    type: count
+
+  measure: median_application_income {
+    type: number
+    sql: ${application_annual_income} ;;
   }
 }
