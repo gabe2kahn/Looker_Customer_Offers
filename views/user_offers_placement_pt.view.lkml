@@ -39,7 +39,7 @@ view: user_offers_placement_pt {
   }
   dimension: placement_number {
     type: number
-    sql: ${TABLE}."PLACEMENT_NUMBER" ;;
+    sql: ${TABLE}."PLACEMENT_NUMBER" + 1;;
   }
 
   dimension: primary_key {
