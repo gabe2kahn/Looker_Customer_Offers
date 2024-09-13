@@ -73,6 +73,24 @@ view: customer_offers_events {
     sql: MEDIAN(${account_age}) ;;
   }
 
+  measure: offers_viewed {
+    type: count_distinct
+    sql: CASE WHEN ${event_name} = 'visible' THEN ${offer_event_id} END ;;
+  }
 
+  measure: offers_clicked {
+    type: count_distinct
+    sql: CASE WHEN ${event_name} = 'clicked' THEN ${offer_event_id} END ;;
+  }
+
+  measure: offers_hidden {
+    type: count_distinct
+    sql: CASE WHEN ${event_name} = 'hidden' THEN ${offer_event_id} END ;;
+  }
+
+  measure: offers_converted {
+    type: count_distinct
+    sql: CASE WHEN ${event_name} = 'converted' THEN ${offer_event_id} END ;;
+  }
 
 }
