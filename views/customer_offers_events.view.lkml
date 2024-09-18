@@ -110,7 +110,7 @@ view: customer_offers_events {
 
   measure: users_clicking_offers {
     type: count_distinct
-    sql: CASE WHEN ${event_name} = 'clicked' THEN ${offer_event_id} END ;;
+    sql: CASE WHEN ${event_name} = 'clicked' THEN ${user_id} END ;;
   }
 
 }
