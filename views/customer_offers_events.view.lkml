@@ -78,6 +78,11 @@ view: customer_offers_events {
     sql: CASE WHEN ${event_name} = 'visible' THEN ${offer_event_id} END ;;
   }
 
+  measure: offers_seen {
+    type: count_distinct
+    sql: CASE WHEN ${event_name} = 'seen' THEN ${offer_event_id} END ;;
+  }
+
   measure: offers_clicked {
     type: count_distinct
     sql: CASE WHEN ${event_name} = 'clicked' THEN ${offer_event_id} END ;;
