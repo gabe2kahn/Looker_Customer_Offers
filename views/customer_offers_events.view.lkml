@@ -98,4 +98,19 @@ view: customer_offers_events {
     sql: CASE WHEN ${event_name} = 'converted' THEN ${offer_event_id} END ;;
   }
 
+  measure: users_viewing_offers {
+    type: count_distinct
+    sql: CASE WHEN ${event_name} = 'visible' THEN ${user_id} END ;;
+  }
+
+  measure: users_seeing_offers {
+    type: count_distinct
+    sql: CASE WHEN ${event_name} = 'seen' THEN ${user_id} END ;;
+  }
+
+  measure: users_clicking_offers {
+    type: count_distinct
+    sql: CASE WHEN ${event_name} = 'clicked' THEN ${offer_event_id} END ;;
+  }
+
 }
