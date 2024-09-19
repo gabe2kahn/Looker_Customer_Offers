@@ -113,4 +113,9 @@ view: customer_offers_events {
     sql: CASE WHEN ${event_name} = 'clicked' THEN ${user_id} END ;;
   }
 
+  measure: users_converting_offers {
+    type: count_distinct
+    sql: CASE WHEN ${event_name} = 'converted' THEN ${user_id} END ;;
+  }
+
 }
