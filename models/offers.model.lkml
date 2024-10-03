@@ -58,4 +58,12 @@ explore: user_profile {
       and ${customer_offers_events.offer_id} = ${user_offers_placement_pt.offer_id} ;;
     relationship: many_to_many
   }
+
+  join: snapshot_pt {
+    type: inner
+    sql_on: ${user_profile.user_id} = ${snapshot_pt.user_id}
+      and ${snapshot_pt.snap_date} = ${customer_offers_events.event_date}
+      and ${snapshot_pt.snap_date} = ${user_offers_placement_pt.snap_date}  ;;
+    relationship: one_to_many
+  }
 }
