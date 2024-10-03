@@ -238,6 +238,6 @@ view: snapshot_pt {
 
   measure: non_delinquent_users {
     type: count_distinct
-    sql: CASE WHEN ${days_overdue} <= 29 THEN ${user_id} END ;;
+    sql: CASE WHEN ${days_overdue} <= 29 and ${account_closed_date} IS NULL and ${chargeoff_date} IS NULL THEN ${user_id} END ;;
   }
 }
