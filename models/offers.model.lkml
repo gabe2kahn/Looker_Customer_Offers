@@ -46,7 +46,8 @@ explore: user_offers_placement_pt {
 explore: user_profile {
   join: customer_offers_events {
     type: left_outer
-    sql_on: ${customer_offers_events.user_id} = ${user_profile.user_id} ;;
+    sql_on: ${customer_offers_events.user_id} = ${user_profile.user_id}
+      and ${snapshot_pt.snap_date} = ${customer_offers_events.event_date} ;;
     relationship: one_to_many
   }
 
@@ -55,15 +56,14 @@ explore: user_profile {
     sql_on: ${user_offers_placement_pt.user_id} = ${user_profile.user_id}
       and ${customer_offers_events.user_id} = ${user_offers_placement_pt.user_id}
       and ${customer_offers_events.event_date} = ${user_offers_placement_pt.snap_date}
-      and ${customer_offers_events.offer_id} = ${user_offers_placement_pt.offer_id} ;;
+      and ${customer_offers_events.offer_id} = ${user_offers_placement_pt.offer_id}
+      and ${snapshot_pt.snap_date} = ${user_offers_placement_pt.snap_date} ;;
     relationship: many_to_many
   }
 
   join: snapshot_pt {
     type: inner
-    sql_on: ${user_profile.user_id} = ${snapshot_pt.user_id}
-      and ${snapshot_pt.snap_date} = ${customer_offers_events.event_date}
-      and ${snapshot_pt.snap_date} = ${user_offers_placement_pt.snap_date}  ;;
+    sql_on: ${user_profile.user_id} = ${snapshot_pt.user_id}  ;;
     relationship: one_to_many
   }
 }
