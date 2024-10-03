@@ -52,7 +52,10 @@ explore: user_profile {
 
   join: user_offers_placement_pt {
     type: left_outer
-    sql_on: ${user_offers_placement_pt.user_id} = ${user_profile.user_id} ;;
+    sql_on: ${user_offers_placement_pt.user_id} = ${user_profile.user_id}
+      and ${customer_offers_events.user_id} = ${user_offers_placement_pt.user_id}
+      and ${customer_offers_events.event_date} = ${user_offers_placement_pt.snap_date}
+      and ${customer_offers_events.offer_id} = ${user_offers_placement_pt.offer_id} ;;
     relationship: many_to_many
   }
 }
