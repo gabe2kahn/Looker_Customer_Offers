@@ -27,6 +27,12 @@ view: customer_offers_events {
     timeframes: [raw, time, date, week, month, quarter, year]
     sql: CAST(${TABLE}."EVENT_TS" AS TIMESTAMP_NTZ) ;;
   }
+
+  dimension: hidden_reason {
+    type: string
+    sql: ${TABLE}."HIDDEN_REASON" ;;
+  }
+
   dimension: offer_category {
     type: string
     sql: ${TABLE}."OFFER_CATEGORY" ;;
