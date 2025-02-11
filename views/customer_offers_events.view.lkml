@@ -33,6 +33,11 @@ view: customer_offers_events {
     sql: ${TABLE}."HIDDEN_REASON" ;;
   }
 
+  dimension: payout {
+    type: string
+    sql: ${TABLE}."PAYOUT" ;;
+  }
+
   dimension: offer_category {
     type: string
     sql: ${TABLE}."OFFER_CATEGORY" ;;
@@ -77,6 +82,12 @@ view: customer_offers_events {
   measure: median_account_age {
     type: number
     sql: MEDIAN(${account_age}) ;;
+  }
+
+  measure: total_payout {
+    type: sum
+    sql: ${payout} ;;
+    value_format_name: usd
   }
 
   measure: offers_viewed {
