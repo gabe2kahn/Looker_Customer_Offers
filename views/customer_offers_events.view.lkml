@@ -87,7 +87,7 @@ view: customer_offers_events {
   measure: total_payout {
     type: sum
     sql: ${payout} ;;
-    value_format_name: usd
+    value_format_name: usd_0
   }
 
   measure: offers_viewed {
